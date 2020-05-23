@@ -1,21 +1,15 @@
 # Unistream
 
-**TODO: Add description**
+This code helps to reproduce `{:error, %GRPC.RPCError{message: ":stream_error: :closed", status: 13}}` error while subscribing to unidrectional server -> client stream 
 
-## Installation
+## Steps to reproduce
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `unistream` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:unistream, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/unistream](https://hexdocs.pm/unistream).
+1. Start Polar lightning
+2. Download and import network configuration https://www.dropbox.com/s/e9nhv482wyhwx3r/Simnet.polar.zip
+3. Start `Simnet` network 
+4. Clone `git@github.com:lessless/unistream.git`
+5. Edit TLS  and Macaroon file locations if necessary in [lib/unistream.ex](https://github.com/lessless/unistream/blob/master/lib/unistream.ex)
+6. Start app `iex -S mix`
+7. Run `Unistream.subscribe` while in Elixir shell
+8. Observe error
 
