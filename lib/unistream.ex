@@ -1,7 +1,8 @@
 defmodule Unistream do
   def working_subscription() do
     chan = setup()
-    Lnrpc.Lightning.Stub.subscribe_invoices(chan, Lnrpc.InvoiceSubscription.new(add_index: 1, settle_index: 1), metadata: %{macaroon: macaroon()}) 
+    {:ok, stream} =  Lnrpc.Lightning.Stub.subscribe_invoices(chan, Lnrpc.InvoiceSubscription.new(add_index: 1, settle_index: 1), metadata: %{macaroon: macaroon()}) 
+    Enum.into(stream, [])
   end
 
   def crashing_subscription() do
