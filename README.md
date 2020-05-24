@@ -1,7 +1,6 @@
 # Unistream
 
-This code helps to reproduce `{:error, %GRPC.RPCError{message: ":stream_error: :closed", status: 13}}` error while sending message with `0` values
-
+This code helps to reproduce `{:error, %GRPC.RPCError{message: ":stream_error: :closed", status: 13}}` error while talking to SubscribeInvoices endpoint.
 
 ## Steps to reproduce
 
