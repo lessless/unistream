@@ -19,6 +19,11 @@ defmodule Unistream do
     chan
   end
   
+  def subscribe_without_invoices() do
+    {:ok, chan} = GRPC.Stub.connect("localhost:10001", cred: creds())
+    Lnrpc.Lightning.Stub.subscribe_invoices(chan, Lnrpc.InvoiceSubscription.new(add_index: 1, settle_index: 1), metadata: %{macaroon: macaroon()}) 
+  end
+  
   defp creds() do
     GRPC.Credential.new(ssl: [cacertfile: System.user_home() <> "/.polar/networks/1/volumes/lnd/alice/tls.cert"]) 
 
